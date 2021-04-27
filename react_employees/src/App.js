@@ -2,7 +2,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import person from './person-icon.svg';
 import './App.css';
-import fetchRandomData from './utils/api.js';
+import API from './utils/api.js';
 
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
         <img src={person} className="App-logo" alt="logo" />
         <h1>
           Employee Directory 
-          {/* <code>src/App.js</code> */}
         </h1>
         <button onClick={() => {
                 fetchRandomData();
@@ -20,14 +19,6 @@ function App() {
             <div>
               {/* {randomData} */}
             </div>
-        {/* <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
       </header>
     </div>
   );
