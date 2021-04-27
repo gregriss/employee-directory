@@ -1,27 +1,23 @@
-import React from 'react';
 import axios from 'axios';
 // import { useEffect } from 'react';
 // import App from '../App';
-const { useEffect, useState } = React;
+// const { useEffect, useState } = React;
 
+// export default {
+    // setRandomUserDataJSON = useState('');
+    // useEffect(() => {
+    //     fetchRandomData().then(randomData => {
+    //         setRandomUserDataJSON(randomData || 'NO user data found');
+    //     });
+    // }, []);
 
-export default function API() {
-    const setRandomUserDataJSON = useState('');
+    const BASEURL = 'https://randomuser.me/api/';
+    const APIKEY = '?results=20';
 
-    useEffect(() => {
-        fetchRandomData().then(randomData => {
-            setRandomUserDataJSON(randomData || 'NO user data found');
-        });
-    }, []);
+    export default {
 
-    const fetchRandomData = () => {
-        return axios.get('https://randomuser.me/api/?results=20')
-        .then(res => {
-            console.log(res.data.results);
-            return JSON.stringify(res);
-        })
-        .catch(err => console.log(err));
+        search: (query) => {
+            return axios.get(BASEURL + query + APIKEY);
+        }
     }
-}
-
-// export default fetchRandomData;
+    

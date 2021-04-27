@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import API from "../../utils/api";
+import EmployeeList from '../EmployeeList';
+import SearchForm from '../SearchForm';
+import api from "../../utils/api";
 import "./style.css";
 
 class Container extends Component {
@@ -10,12 +12,15 @@ class Container extends Component {
 
   // When this component mounts, search the random user API
   componentDidMount() {
-    this.searchRandomUser("kittens");
+    this.searchRandomUser("user");
   }
 
   searchRandomUser = query => {
-      API.search(query)
-      .then(res => this.setState({ results: res.data.data }))
+      api.search(query)
+      .then(res => {
+          console.log(res);
+          this.setState({ results: res.data.data })
+      })
       .catch(err => console.log(err));
   };
 
@@ -35,6 +40,7 @@ class Container extends Component {
   render() {
       return (
           <div>
+              <h1>Employee Search</h1>
               <SearchForm
                 search={this.state.search}
                 handleFormSubmit={this.handleFormSubmit}
@@ -45,6 +51,5 @@ class Container extends Component {
       )
   }
 }
-    
 
 export default Container;
