@@ -2,6 +2,8 @@ import React from 'react';
 // import logo from './logo.svg';
 import person from './person-icon.svg';
 import './App.css';
+import fetchRandomData from './utils/api.js';
+
 
 function App() {
   return (
@@ -12,6 +14,12 @@ function App() {
           Employee Directory 
           {/* <code>src/App.js</code> */}
         </h1>
+        <button onClick={() => {
+                fetchRandomData();
+            }}>Fetch Random Data</button>
+            <div>
+              {/* {randomData} */}
+            </div>
         {/* <a
           className="App-link"
           href="https://reactjs.org"
