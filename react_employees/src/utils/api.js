@@ -12,12 +12,13 @@ import axios from 'axios';
     // }, []);
 
     const BASEURL = 'https://randomuser.me/api/';
-    const APIKEY = '?results=20';
+    let query = '?results=20';
 
     export default {
 
         search: (query) => {
-            return axios.get(BASEURL + query + APIKEY);
+            // return axios.get(BASEURL + query + APIKEY);
+            return axios.get(BASEURL + query);
         }
     }
     

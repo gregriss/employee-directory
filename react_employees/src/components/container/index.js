@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import EmployeeList from '../EmployeeList';
-import SearchForm from '../SearchForm';
+import EmployeeList from '../employeeList';
+import SearchForm from '../searchForm';
 import api from "../../utils/api";
 import "./style.css";
 
@@ -12,14 +12,14 @@ class Container extends Component {
 
   // When this component mounts, search the random user API
   componentDidMount() {
-    this.searchRandomUser("user");
+    this.searchRandomUser("?results=12"); // "user" before
   }
 
   searchRandomUser = query => {
       api.search(query)
       .then(res => {
-          console.log(res);
-          this.setState({ results: res.data.data })
+          console.log(res.data.results);
+          this.setState({ results: res.data.results }) // was results: res.data.data
       })
       .catch(err => console.log(err));
   };
