@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import EmployeeList from '../employeeList';
 // import EmployeeCard from '../employeeCard';
 import SearchForm from '../searchForm';
-import api from "../../utils/api";
+import randomUsers from "../../utils/api";
 import "./style.css";
 
 class Container extends Component {
@@ -17,7 +17,7 @@ class Container extends Component {
   }
 
   searchRandomUsers = query => {
-    api.search(query)
+    randomUsers.search(query)
       .then(res => {
         console.log(res.data.results);
         this.setState({ results: res.data.results })
@@ -93,9 +93,9 @@ class Container extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search-div">
         <h2>Employee Search</h2>
-        <h4>Find an Employee by First Name, Last Name, Full Name, Gender, Cell #, Email, City, Country, or [City, Country]</h4>
+        <h3>Find an Employee by First Name, Last Name, Full Name, Gender, Cell #, Email, City, Country, or [City, Country]</h3>
         <SearchForm
           search={this.state.search}
           handleFormSubmit={this.handleFormSubmit}

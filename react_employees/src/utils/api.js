@@ -11,13 +11,15 @@ import axios from 'axios';
 //     });
 // }, []);
 
-const BASEURL = 'https://randomuser.me/api/';
+const URL = 'https://randomuser.me/api/';
 // let query = '?results=20';
 
-export default {
+const randomUsers = {
 
     search: (query) => {
         // return axios.get(BASEURL + query + APIKEY);
-        return axios.get(BASEURL + query);
+        return axios.get(URL + query);
     }
 }
+
+export default randomUsers;
