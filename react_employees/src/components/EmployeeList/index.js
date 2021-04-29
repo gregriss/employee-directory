@@ -5,7 +5,7 @@ const styles = {
   ul: {
     margin: "2rem",
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr)",
+    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr)",
     gap: "2rem"
   },
 
@@ -18,11 +18,11 @@ const styles = {
 }
 
 function EmployeeList(props) {
-  let employeeArr = [props.results];
+  // let employeeArr = [props.results];
   return (
     <ul style={styles.ul} className="list-group">
       {props.results.map(result => (
-        // <EmployeeCard/>
+
         <li style={styles.li} className="list-group-item" key={result.login.uuid}>
           <img alt={result.name.first.last} className="img-fluid" src={result.picture.thumbnail} />
           <p><strong>Name: </strong> {result.name.first} {result.name.last}</p>
