@@ -13,7 +13,7 @@ class Container extends Component {
 
   // When this component mounts, search the random user API
   componentDidMount() {
-    this.searchRandomUsers("?results=32"); // "user" before
+    this.searchRandomUsers("?results=8"); // "user" before
   }
 
   searchRandomUsers = query => {
@@ -36,7 +36,6 @@ class Container extends Component {
   };
 
   handleFormSubmit = event => {
-    // console.log(this.state.search);
     event.preventDefault();
     // this.searchRandomUsers(this.state.search);
     // let user = {
@@ -50,19 +49,26 @@ class Container extends Component {
       let firstName = `${user.name.first}`;
       let lastName = `${user.name.last}`;
       let fullName = `${user.name.first} ${user.name.last}`;
+      let userGender = `${user.gender}`;
       let userCell = `${user.cell}`;
-      // console.log(userCell);
-      // console.log(this.state.search);
-      // if (fullName === this.state.search || userCell === this.state.search) {
-      if (firstName === state || lastName === state || fullName === state || userCell === state) {
+      let userEmail = `${user.email}`;
+      let userCity = `${user.location.city}`;
+      let userCountry = `${user.location.country}`;
+      let userLocation = `${user.location.city}, ${user.location.country}`;
+
+      if (firstName === state || lastName === state || fullName === state || userGender === state || userCell === state || userEmail === state || userCity === state || userCountry === state || userLocation === state) {
         // this.setState({ results: results });
+        console.log(state);
         return true;
         // return this.user;
       }
-      // else if (lastName === this.state.search) {
-      //   return true;
-      //   // alert("Search Result Not found");
-      //   // this.setState({ results: this.state.results })
+      else if (this.state.results.includes(this.state.search)) {
+        console.log(results)
+        return true;
+      }
+      // else {
+      //   alert('Not found');
+      //   return;
       // }
     })
     this.setState({ results: results })
@@ -70,17 +76,12 @@ class Container extends Component {
     return;
   };
 
-  // this was from HW setup, it needs to be tested/refactored
-  // handleSort = (key, asc)
   handleSort = (key, asc) => {
-    // console.log(key, desc);
+    // event.preventDefault();
     // need to COPY the array ..... 'employees' needs to change
     let employeeSorted = [...this.state.results];
-
-    // console.log(employeeSorted);
     // sort by key, and ascending
     employeeSorted.sort((a, b) => {
-      // console.log(a[key] > b[key])
       return a[key] > b[key] ? asc * 1 : asc * -1;
     })
     // set the state
@@ -89,18 +90,22 @@ class Container extends Component {
     console.log(employeeSorted);
   }
 
+
   render() {
     return (
       <div>
         <h2>Employee Search</h2>
-        <h4>Search By First Name, Last Name, Full Name, Cell Phone #</h4>
+        <h4>Find an Employee by First Name, Last Name, Full Name, Gender, Cell #, Email, City, Country, or [City, Country]</h4>
         <SearchForm
           search={this.state.search}
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <button onClick={() => this.handleSort("results.gender", -1)}>Sort by First Name</button>
-        <button onClick={() => this.handleSort("results.name", -1)}>Sort Reversed by Name</button>
+        <button onClick={() => this.handleSort(`email`, 1)}>Sort by Email</button>
+        <button onClick={() => this.handleSort(`email`, -1)}>Sort by Email Reversed</button>
+        <button onClick={() => this.handleSort(`nat`, 1)}>Sort by Nationality</button>
+        <button onClick={() => this.handleSort(`nat`, -1)}>Sort by Nationality Reversed</button>
+        <button onClick={() => this.handleSort(`city`, 1)}>Sort by City</button>
 
         {/* {this.state.results.map(result => (
           <EmployeeCard
@@ -111,7 +116,6 @@ class Container extends Component {
             email={result.email}
           />
         ))} */}
-
         <EmployeeList
           results={this.state.results}
           handleSort={this.handleSort}

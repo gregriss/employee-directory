@@ -28,6 +28,7 @@ function EmployeeList(props) {
           <p><strong>Name: </strong> {result.name.first} {result.name.last}</p>
           <p><strong>Cell: </strong> {result.cell}</p>
           <p><strong>Email: </strong> {result.email}</p>
+          <p><strong>Nationality: </strong>{result.nat}</p>
           <p><strong>Location: </strong> {result.location.city}, {result.location.country}</p>
         </li>
       ))}
