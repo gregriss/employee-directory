@@ -13,7 +13,7 @@ class Container extends Component {
 
   // When this component mounts, search the random user API
   componentDidMount() {
-    this.searchRandomUsers("?results=8"); // "user" before
+    this.searchRandomUsers("?results=24"); // "user" before
   }
 
   searchRandomUsers = query => {
@@ -75,8 +75,8 @@ class Container extends Component {
     // return results;
     return;
   };
-
-  handleSort = (key, asc) => {
+  // function to sort 1 level down the DOM tree
+  handleSort1Level = (key, asc) => {
     // event.preventDefault();
     // need to COPY the array ..... 'employees' needs to change
     let employeeSorted = [...this.state.results];
@@ -90,6 +90,19 @@ class Container extends Component {
     console.log(employeeSorted);
   }
 
+  // function to sort 2 levels down the DOM tree
+  handleSort2Levels = (key1, key2, asc) => {
+    // need to COPY the array ..... 'employees' needs to change
+    let employeeSorted = [...this.state.results];
+    // sort by key, and ascending
+    employeeSorted.sort((a, b) => {
+      return a[key1][key2] > b[key1][key2] ? asc * 1 : asc * -1;
+    })
+    // set the state
+    // these values may need to change
+    this.setState({ results: employeeSorted })
+    console.log(employeeSorted);
+  }
 
   render() {
     return (
@@ -101,21 +114,14 @@ class Container extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <button onClick={() => this.handleSort(`email`, 1)}>Sort by Email</button>
-        <button onClick={() => this.handleSort(`email`, -1)}>Sort by Email Reversed</button>
-        <button onClick={() => this.handleSort(`nat`, 1)}>Sort by Nationality</button>
-        <button onClick={() => this.handleSort(`nat`, -1)}>Sort by Nationality Reversed</button>
-        <button onClick={() => this.handleSort(`city`, 1)}>Sort by City</button>
-
-        {/* {this.state.results.map(result => (
-          <EmployeeCard
-            key={result.uuid}
-            picture={result.picture.thumbnail}
-            name={result.name.first.last}
-            phone={result.cell}
-            email={result.email}
-          />
-        ))} */}
+        <section className="buttons-container">
+          <button onClick={() => this.handleSort2Levels('name', 'first', 1)}>Sort by First Name</button>
+          <button onClick={() => this.handleSort1Level('email', 1)}>Sort by Email</button>
+          <button onClick={() => this.handleSort1Level('email', -1)}>Sort by Email Reversed</button>
+          <button onClick={() => this.handleSort1Level('nat', 1)}>Sort by Nationality</button>
+          <button onClick={() => this.handleSort1Level('nat', -1)}>Sort by Nationality Reversed</button>
+          <button onClick={() => this.handleSort2Levels('location', 'city', 1)}>Sort by City</button>
+        </section>
         <EmployeeList
           results={this.state.results}
           handleSort={this.handleSort}
