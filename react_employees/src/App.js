@@ -7,19 +7,19 @@ import Container from './components/container';
 function App() {
   return (
     <>
-      <Container />
       <div className="App">
       <header className="App-header">
         <img src={person} className="App-logo" alt="logo" />
-        <h1>
+        <h2>
           Employee Directory 
-        </h1>
+        </h2>
         {/* <button onClick={() => {
-                search();
-            }}>Fetch Random Data</button>
-          */}
+          search();
+        }}>Fetch Random Data</button>
+      */}
         </header>
       </div>
+      <Container />
     </>
   );
 }
