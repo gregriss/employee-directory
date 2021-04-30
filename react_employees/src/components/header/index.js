@@ -4,9 +4,10 @@ import '../../App.css';
 
 const headerStyles = {
     backgroundColor: '#282c34',
-    display: 'grid',
-    padding: '0.5rem',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr)',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '1rem',
     fontSize: 'calc(10px + 2vmin)',
     color: 'white'
 }
@@ -16,10 +17,10 @@ function Header() {
         <>
             <div className="App">
                 <header style={headerStyles} className="App-header">
-                    <img src={person} className="App-logo" alt="logo" />
                     <h2>
                         Employee Directory
-                </h2>
+                    </h2>
+                    <img src={person} className="App-logo" alt="logo" />
                 </header>
             </div>
         </>

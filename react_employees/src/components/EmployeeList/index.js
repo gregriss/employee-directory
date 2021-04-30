@@ -22,7 +22,6 @@ function EmployeeList(props) {
   return (
     <ul style={styles.ul} className="list-group">
       {props.results.map(result => (
-
         <li style={styles.li} className="list-group-item" key={result.login.uuid}>
           <img alt={result.name.first.last} className="img-fluid" src={result.picture.thumbnail} />
           <p><strong>Name: </strong> {result.name.first} {result.name.last}</p>

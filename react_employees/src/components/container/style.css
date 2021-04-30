@@ -3,5 +3,9 @@ h2 {
 }
 
 .search-div {
-    margin: 1rem 5rem;
+    margin: 1rem 4rem;
+}
+
+.buttons-container {
+    margin: 0 4rem;
 }

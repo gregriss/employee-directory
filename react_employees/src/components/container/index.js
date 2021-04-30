@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EmployeeList from '../employeeList';
 // import EmployeeCard from '../employeeCard';
+// import Sort from '../sortParams';
 import SearchForm from '../searchForm';
 import randomUsers from "../../utils/api";
 import "./style.css";
@@ -115,12 +116,13 @@ class Container extends Component {
           handleInputChange={this.handleInputChange}
         />
         <section className="buttons-container">
-          <button onClick={() => this.handleSort2Levels('name', 'first', 1)}>Sort by First Name</button>
-          <button onClick={() => this.handleSort1Level('email', 1)}>Sort by Email</button>
-          <button onClick={() => this.handleSort1Level('email', -1)}>Sort by Email Reversed</button>
-          <button onClick={() => this.handleSort1Level('nat', 1)}>Sort by Nationality</button>
-          <button onClick={() => this.handleSort1Level('nat', -1)}>Sort by Nationality Reversed</button>
-          <button onClick={() => this.handleSort2Levels('location', 'city', 1)}>Sort by City</button>
+          <h3>Sort By:</h3>
+          <button onClick={() => this.handleSort2Levels('name', 'first', 1)}>First Name</button>
+          <button onClick={() => this.handleSort1Level('email', 1)}>Email</button>
+          <button onClick={() => this.handleSort1Level('email', -1)}>Email Reversed</button>
+          <button onClick={() => this.handleSort1Level('nat', 1)}>Nationality</button>
+          <button onClick={() => this.handleSort1Level('nat', -1)}>Nationality Reversed</button>
+          <button onClick={() => this.handleSort2Levels('location', 'city', 1)}>City</button>
         </section>
         <EmployeeList
           results={this.state.results}
