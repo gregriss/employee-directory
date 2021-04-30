@@ -38,15 +38,20 @@ class Container extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    // this.searchRandomUsers(this.state.search);
-    // let user = {
+    let state = this.state.search;
+    // was let user
+    // let result = {
     //   firstName: `${user.name.first}`,
     //   lastName: `${user.name.last}`,
     //   fullName: `${user.name.first} ${user.name.last}`,
-    //   userCell: `${user.cell}`
+    //   userCell: `${user.cell}`,
+    //   userEmail: `${result.email}`,
+    //   userCity: `${result.location.city}`,
+    //   userCountry: `${result.location.country}`
     // }
+
+    // filter employees to match parameter of the search term
     const results = this.state.results.filter(user => {
-      let state = this.state.search;
       let firstName = `${user.name.first}`;
       let lastName = `${user.name.last}`;
       let fullName = `${user.name.first} ${user.name.last}`;
@@ -58,10 +63,8 @@ class Container extends Component {
       let userLocation = `${user.location.city}, ${user.location.country}`;
 
       if (firstName === state || lastName === state || fullName === state || userGender === state || userCell === state || userEmail === state || userCity === state || userCountry === state || userLocation === state) {
-        // this.setState({ results: results });
         console.log(state);
         return true;
-        // return this.user;
       }
       else if (this.state.results.includes(this.state.search)) {
         console.log(results)
@@ -73,34 +76,30 @@ class Container extends Component {
       // }
     })
     this.setState({ results: results })
-    // return results;
     return;
   };
   // function to sort 1 level down the DOM tree
   handleSort1Level = (key, asc) => {
-    // event.preventDefault();
-    // need to COPY the array ..... 'employees' needs to change
+    // Copy the array into new array
     let employeeSorted = [...this.state.results];
     // sort by key, and ascending
     employeeSorted.sort((a, b) => {
       return a[key] > b[key] ? asc * 1 : asc * -1;
     })
     // set the state
-    // these values may need to change
     this.setState({ results: employeeSorted })
     console.log(employeeSorted);
   }
 
   // function to sort 2 levels down the DOM tree
   handleSort2Levels = (key1, key2, asc) => {
-    // need to COPY the array ..... 'employees' needs to change
+    // Copy the array to a new array
     let employeeSorted = [...this.state.results];
     // sort by key, and ascending
     employeeSorted.sort((a, b) => {
       return a[key1][key2] > b[key1][key2] ? asc * 1 : asc * -1;
     })
     // set the state
-    // these values may need to change
     this.setState({ results: employeeSorted })
     console.log(employeeSorted);
   }
@@ -109,15 +108,16 @@ class Container extends Component {
     return (
       <div className="search-div">
         <h2>Employee Search</h2>
-        <h3>Find an Employee by First Name, Last Name, Full Name, Gender, Cell #, Email, City, Country, or [City, Country]</h3>
+        <h3>Filter/Find an Employee by their First Name, Last Name, Full Name, gender (male or female), Cell #, Email, City, Country, or [City, Country]</h3>
         <SearchForm
           search={this.state.search}
           handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
         <section className="buttons-container">
-          <h3>Sort By:</h3>
+          <h3>Or Sort Alphabetically By:</h3>
           <button onClick={() => this.handleSort2Levels('name', 'first', 1)}>First Name</button>
+          <button onClick={() => this.handleSort2Levels('name', 'last', 1)}>Last Name</button>
           <button onClick={() => this.handleSort1Level('email', 1)}>Email</button>
           <button onClick={() => this.handleSort1Level('email', -1)}>Email Reversed</button>
           <button onClick={() => this.handleSort1Level('nat', 1)}>Nationality</button>
