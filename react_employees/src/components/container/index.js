@@ -35,6 +35,12 @@ class Container extends Component {
     });
     // console.log(value);
   };
+  // function to remove an individual employee
+  handleRemove = id => {
+    this.setState({
+      results: this.state.results.filter(result => result.cell !== id)
+    });
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -127,6 +133,7 @@ class Container extends Component {
         <EmployeeList
           results={this.state.results}
           handleSort={this.handleSort}
+          handleRemove={this.handleRemove}
         />
       </div>
     )

@@ -1,7 +1,7 @@
 import React from "react";
 // import EmployeeCard from "../employeeCard";
 
-const styles = {
+const listStyles = {
   ul: {
     margin: "2rem",
     display: "grid",
@@ -14,16 +14,27 @@ const styles = {
     display: "inline",
     padding: "1rem",
     boxShadow: "1px 1px 8px 5px #808080"
-  }
+  },
+
+}
+
+const spanStyles = {
+  // position: 'relative',
+  // left: '65%',
+  // bottom: '15%',
+  color: 'red',
+  fontSize: '30px',
+  fontWeight: 'bold'
 }
 
 function EmployeeList(props) {
   // let employeeArr = [props.results];
   return (
-    <ul style={styles.ul} className="list-group">
+    <ul style={listStyles.ul} className="list-group">
       {props.results.map(result => (
-        <li style={styles.li} className="list-group-item" key={result.login.uuid}>
-          <img alt={result.name.first.last} className="img-fluid" src={result.picture.thumbnail} />
+        <li style={listStyles.li} className="list-group-item" key={result.cell}>
+          <span style={spanStyles} className="remove" onClick={() => props.handleRemove(result.cell)}>X</span>
+          <img alt={result.name.first.last} className="img-fluid" src={result.picture.medium} />
           <p><strong>Name: </strong> {result.name.first} {result.name.last}</p>
           <p><strong>Cell: </strong> {result.cell}</p>
           <p><strong>Email: </strong> {result.email}</p>
