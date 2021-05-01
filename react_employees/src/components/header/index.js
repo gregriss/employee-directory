@@ -7,7 +7,7 @@ const headerStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '1rem 2rem',
+    padding: '0.5rem 3rem',
     fontSize: 'calc(10px + 1vmin)',
     color: 'white',
     boxShadow: 'inset -5px 1px 15px 5px #1b1e22'
