@@ -1,4 +1,4 @@
-# employee-directory  
+# Employee Directory  
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 
 Employee Directory built with React and the Random User Generator API
@@ -42,3 +42,8 @@ The user should be able to:
 
 ## License  
 View the full MIT License [here](./LICENSE)  
+
+## Questions  
+Feel free to contact me with any questions:  
+[GitHub Repo](https://github.com/gregriss/budget-tracker-pwa)  
+[Email me](mailto:gregriss23@gmail.com)
