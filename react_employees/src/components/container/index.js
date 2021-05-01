@@ -113,7 +113,7 @@ class Container extends Component {
   render() {
     return (
       <div className="search-div">
-        <h2>Employee Search</h2>
+        <h2>Search</h2>
         <h3>Filter/Find an Employee by their First Name, Last Name, Full Name, gender (male or female), Cell #, Email, City, Country, or [City, Country]</h3>
         <SearchForm
           search={this.state.search}

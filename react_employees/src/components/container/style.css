@@ -1,5 +1,5 @@
 h2, h3 {
-    margin: 2rem;
+    margin: 2rem 4rem;
 }
 
 .search-div {
@@ -8,4 +8,8 @@ h2, h3 {
 
 .buttons-container {
     margin: 0 4rem;
+}
+
+.buttons-container>h3 {
+    margin: 1rem 0;
 }

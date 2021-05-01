@@ -7,9 +7,10 @@ const headerStyles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '1rem',
-    fontSize: 'calc(10px + 2vmin)',
-    color: 'white'
+    padding: '1rem 2rem',
+    fontSize: 'calc(10px + 1vmin)',
+    color: 'white',
+    boxShadow: 'inset -5px 1px 15px 5px #1b1e22'
 }
 
 function Header() {
@@ -17,9 +18,9 @@ function Header() {
         <>
             <div className="App">
                 <header style={headerStyles} className="App-header">
-                    <h2>
+                    <h1>
                         Employee Directory
-                    </h2>
+                    </h1>
                     <img src={person} className="App-logo" alt="logo" />
                 </header>
             </div>
