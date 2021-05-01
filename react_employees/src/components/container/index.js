@@ -14,7 +14,7 @@ class Container extends Component {
 
   // When this component mounts, search the random user API
   componentDidMount() {
-    this.searchRandomUsers("?results=24"); // "user" before
+    this.searchRandomUsers("?results=24");
   }
 
   searchRandomUsers = query => {
@@ -35,6 +35,15 @@ class Container extends Component {
     });
     // console.log(value);
   };
+
+  handleHover = key => {
+    // console.log(key);
+    if (this.state.results.phone === key.value) {
+      document.getElementById(key).setAttribute('visibility', 'visible')
+      // alert(key)
+    }
+  }
+
   // function to remove an individual employee
   handleRemove = id => {
     this.setState({
@@ -133,6 +142,7 @@ class Container extends Component {
         <EmployeeList
           results={this.state.results}
           handleSort={this.handleSort}
+          handleHover={this.handleHover}
           handleRemove={this.handleRemove}
         />
       </div>

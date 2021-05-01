@@ -22,12 +22,18 @@ const imageStyles = {
 }
 
 const spanStyles = {
-  display: 'grid',
-  textAlign: 'right',
-  color: '#ea4343',
-  fontSize: '36px',
-  fontWeight: 'bold',
-  cursor: 'pointer'
+  xSpan: {
+    display: 'grid',
+    textAlign: 'right',
+    color: '#ea4343',
+    fontSize: '36px',
+    fontWeight: 'bold',
+    cursor: 'pointer'
+  },
+
+  tooltip: {
+    visibility: 'hidden'
+  }
 }
 
 function EmployeeList(props) {
@@ -35,7 +41,8 @@ function EmployeeList(props) {
     <ul style={listStyles.ul} className="list-group">
       {props.results.map(result => (
         <li style={listStyles.li} className="list-group-item" key={result.cell}>
-          <span style={spanStyles} className="remove" onClick={() => props.handleRemove(result.cell)}>X</span>
+          <span id={`${result.phone}`} key={result.phone} style={spanStyles.tooltip} className="tooltip-text">Remove</span>
+          <span style={spanStyles.xSpan} className="remove" onClick={() => props.handleRemove(result.cell)} onMouseEnter={() => props.handleHover(result.phone)} >X</span>
           <img style={imageStyles} alt={result.name.first.last} className="img-fluid" src={result.picture.medium} />
           <p style={{ fontSize: '120%' }}><strong>{result.name.first} {result.name.last}</strong></p>
           <p><strong>Cell: </strong> {result.cell}</p>
@@ -43,8 +50,9 @@ function EmployeeList(props) {
           <p><strong>Nationality: </strong>{result.nat}</p>
           <p><strong>Location: </strong> {result.location.city}, {result.location.country}</p>
         </li>
-      ))}
-    </ul>
+      ))
+      }
+    </ul >
   );
 }
 

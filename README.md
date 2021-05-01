@@ -7,12 +7,13 @@ Employee Directory built with React and the Random User Generator API
 This App was built with React.js, and it returns a list of 'employees' from the Random User Generator API. A search bar allows the user to filter employees by a number of parameter, such as name, email, and city.  Dedicated buttons allow the user to sort employees alphabetically by various parameters as well.
 
 ## Table of Contents  
--[User Story](#user-story)  
--[Business Context](#business-context)  
--[Acceptance Criteria](#acceptance-criteria)  
--[Usage](#usage)  
--[License](#license)  
--[Questions](#questions) 
+- [User Story](#user-story)  
+- [Business Context](#business-context)  
+- [Acceptance Criteria](#acceptance-criteria)  
+- [Usage](#usage)  
+- [Technology](#technology)
+- [License](#license)  
+- [Questions](#questions) 
 
 ## User Story
 * As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information.
@@ -31,7 +32,7 @@ The user should be able to:
 
 ## Usage  
 ![Screenshot](react_employees/public/screenshot.png)  
-[Deployed App](deployed-app-link)  
+### [Link to Deployed App](deployed-app-link)  
 
 ## Technology  
 - [React.js](https://reactjs.org/)
@@ -45,5 +46,5 @@ View the full MIT License [here](./LICENSE)
 
 ## Questions  
 Feel free to contact me with any questions:  
-[GitHub Repo](https://github.com/gregriss/budget-tracker-pwa)  
-[Email me](mailto:gregriss23@gmail.com)
+- [GitHub Repo](https://github.com/gregriss/budget-tracker-pwa)  
+- [Email me](mailto:gregriss23@gmail.com)
